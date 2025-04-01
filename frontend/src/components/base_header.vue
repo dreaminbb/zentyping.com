@@ -26,6 +26,13 @@ export default defineComponent({
       <div>
         <div><font-awesome-icon class="nav_icon1" icon="book" /></div>
       </div>
+      <a
+        href="https://github.com/dreaminbb/zentyping.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <font-awesome-icon class="nav_icon_github" :icon="['fab', 'github']" />
+      </a>
       <div>
         <div><font-awesome-icon class="nav_icon2" icon="gear" /></div>
       </div>

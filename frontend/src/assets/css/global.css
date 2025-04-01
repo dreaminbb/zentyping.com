@@ -47,7 +47,7 @@ header h1 #site_name {
 }
 
 header nav {
-                width: 35%;
+                width: 40%;
                 display: flex;
                 justify-content: space-evenly;
                 align-items: center;
@@ -63,6 +63,11 @@ header nav #user_name_display {
 
 .nav_icon1 {
                 color: var(--nav-icon-1);
+}
+
+.nav_icon_github {
+                font-size: 2rem;
+                color: var(--nav-icon-github);
 }
 
 .nav_icon2 {
