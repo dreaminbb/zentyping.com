@@ -17,9 +17,9 @@ export async function code_load(): Promise<void> {
 
     const code: string = store_instance.code_data_obj?.[lang as keyof store_code_type]?.[pointer]?.code as string;
 
-    console.log('code_load.ts', code)
+    // console.log('code_load.ts', code)
 
-    console.log(code, 'code_load.ts')
+    // console.log(code, 'code_load.ts')
     //* wait until finish rendering
     // I think this code supposed to be not wait time. 
     // It supposed to be chack the rendering is finished.

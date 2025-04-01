@@ -122,7 +122,7 @@ class play_func {
     this.play_code_display_container = document.getElementById(
       'code_display_container'
     ) as HTMLElement
-    // console.log(this.play_code_display_container, this.time_display_display)
+    // // console.log(this.play_code_display_container, this.time_display_display)
     if (!this.play_code_display_container || !this.time_display_display) {
       throw new Error('something is null')
     }
@@ -140,14 +140,14 @@ class play_func {
 
     this.fetch_char_spans_ignore_space_after_line_break_as_elm()
     // add utyped class to all spans
-    // console.log(this.essenced_spans_for_comparison)
-    // console.log('init')
+    // // console.log(this.essenced_spans_for_comparison)
+    // // console.log('init')
     this.add_untyped_class_to_all_spans()
     this.add_cursor_to_first_char()
   }
 
   private add_untyped_class_to_all_spans(): void {
-    console.log('add untyped class to all spans function')
+    // console.log('add untyped class to all spans function')
     try {
       this.essenced_spans_for_comparison.forEach((value: HTMLElement) => {
         value.classList.add('untyped')
@@ -210,7 +210,7 @@ class play_func {
     this.check_afk_typing_timer_func = setTimeout(() => {
       this.is_playing = false
       this.delete()
-      const code:string = this.raw_code
+      const code: string = this.raw_code
       this.init(code)
       short_cut_ins.init()
     }, config.type_afk_limit * 1000)
@@ -349,7 +349,7 @@ class play_func {
     this.type_counter++
     this.break_afk_check()
     this.check_afk_after_every_type()
-    // console.log(this.essenced_spans_for_comparison)
+    // // console.log(this.essenced_spans_for_comparison)
 
     // It works only first type.
     if (this.type_counter === 1) {
@@ -489,7 +489,7 @@ class play_func {
       return
     }
     if (input_char === '\n' && before_target_span_elm?.textContent !== '\n') {
-      // console.log(before_target_span_elm?.textContent, this.char_index, 'char index', 231)
+      // // console.log(before_target_span_elm?.textContent, this.char_index, 'char index', 231)
 
       if (before_target_span_elm?.textContent === '\u00A0') {
         before_target_span_elm?.classList.add('incorrect_space')
@@ -508,7 +508,7 @@ class play_func {
       return
     }
 
-    console.log(target_span_elm)
+    // console.log(target_span_elm)
     const is_target_elm_text_space: boolean = target_span_elm?.textContent === '\u00A0'
     const is_input_space: boolean = input_char === ' '
     const input_ist_space_but_target_is_space: boolean =

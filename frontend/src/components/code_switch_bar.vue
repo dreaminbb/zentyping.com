@@ -19,7 +19,7 @@ export default defineComponent({
         code_data().code_lang = langName
         code_load()
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     }
     return { switchLang, selectedLang, code_data, code_load }

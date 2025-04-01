@@ -23,11 +23,11 @@ class short_cut {
   }
 
   public handle_keydown_for_short_cut(e: KeyboardEvent): void {
-    console.log(e.key)
+    // console.log(e.key)
     if (e.key === 'Tab') {
 
       e.preventDefault();
-      console.log(code_data().code_point)
+      // console.log(code_data().code_point)
 
       try {
         play_func_ins.next_code();

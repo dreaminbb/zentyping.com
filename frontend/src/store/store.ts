@@ -21,7 +21,7 @@ export const user_status = defineStore('user_status', {
     is_user: true,
     is_admin: false
   }),
-  persist:{
+  persist: {
     key: 'user_status', // 保存時のキー名
     storage: localStorage, // localStorageに保存
   },
@@ -29,11 +29,11 @@ export const user_status = defineStore('user_status', {
 
 export const user_info = defineStore('user_info', {
 
-  state: (): { user_name: null | string; github_user_id: null | number; user_icon_url: string; token: null | string } => ({
+  state: (): { user_name: null | string; github_user_id: null | number; user_icon_url: string; token: string } => ({
     user_name: null,
     github_user_id: null,
     user_icon_url: '',
-    token: null
+    token: ''
   }),
 
   actions: {
@@ -50,7 +50,7 @@ export const user_info = defineStore('user_info', {
       this.user_name = null
       this.github_user_id = null
       this.user_icon_url = ''
-      this.token = null
+      this.token = ''
     }
   },
 
@@ -96,7 +96,7 @@ export const code_data = defineStore('code_data', {
           Object.assign(this.code_data_obj, data as unknown as store_code_type)
         }
         // 既存のデータがある場合は直接更新
-        console.log(this.code_data_obj)
+        // console.log(this.code_data_obj)
 
         this.ready = true
       } catch (e) {
@@ -129,7 +129,7 @@ export const code_data = defineStore('code_data', {
         if (!this.code_data_obj) {
           throw new Error('code_data_obj is null')
         }
-        console.log(data)
+        // console.log(data)
         this.code_data_obj = data as unknown as store_code_type
 
         return

@@ -10,8 +10,8 @@ async function sgin_in_with_github(): Promise<{ user: any; token: string | undef
                                 const token: string | undefined = credential?.accessToken;
                                 const user = result.user;
                                 // console.info(typeof result, credential, 'type')
-                                // console.log('user', user)
-                                // console.log('token', token)
+                                // // console.log('user', user)
+                                // // console.log('token', token)
 
                                 return { user, token };
                 } catch (error) {
@@ -49,7 +49,7 @@ async function handle_sign_out(): Promise<void> {
                                 await auth.signOut();
                                 user_info().init_user_info()
                                 user_status().init_status()
-                                console.log('User signed out');
+                                // console.log('User signed out');
                 } catch (error) {
                                 console.error('Error signing out:', error);
                 }

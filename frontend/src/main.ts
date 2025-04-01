@@ -18,9 +18,6 @@ const router = createRouter({
 library.add(fas as IconPack, far as IconPack, fab as IconPack)
 const app = createApp(App)
 
-if (import.meta.env.PROD === true) {
-  console.log('api url', import.meta.env.VITE_API_URL)
-}
 
 app.use(pinia)
 app.use(router)
@@ -33,7 +30,7 @@ loading_setup().then(() => {
   code_data().initialize().then(() => {
     app.mount('#app')
   }).catch((error) => {
-    console.log(error)
+    // // console.log(error)
   })
 })
 

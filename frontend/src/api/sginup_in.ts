@@ -7,7 +7,11 @@ import { user_info } from "@/store/store"
 async function siginup_send_github_id_to_server(id: string): Promise<void> {
 
                 try {
-                                const response = await fetch(import.meta.env['VITE_SGINUP_URL'] as string, {
+                                if (!user_info().token) {
+                                                // console.error('Token is not available in user_info store');
+                                                return;
+                                }
+                                fetch(import.meta.env['VITE_SGINUP_URL'] as string, {
                                                 method: 'POST',
                                                 headers: {
                                                                 'Content-Type': 'application/json',
@@ -18,8 +22,8 @@ async function siginup_send_github_id_to_server(id: string): Promise<void> {
                                                                 github_user_id: id,
                                                 })
                                 })
-                                console.log('response', response);
-                                console.log('response cookies', response.headers.get('set-cookie'));
+                                // console.log('response', response);
+                                // console.log('response cookies', response.headers.get('set-cookie'));
                 }
                 catch (e) {
                                 console.error('Error sending GitHub ID to server:', e)

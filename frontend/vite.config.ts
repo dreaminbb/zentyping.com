@@ -2,20 +2,22 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
-import { exit } from 'node:process'
+
+interface ImportMetaEnv {
+  [key: string]: string | boolean | undefined
+}
+
+// Extend the ImportMeta interface
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
 
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
 
-  const env = loadEnv(mode, process.cwd());
-  const custom_env = process.env.CUSTOM_ENV;
-
-  if (!custom_env) {
-    exit(1)
-  }
-
-  console.log(`building with ${custom_env} environment`)
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  // console.log('VITE_PRODUCTION', process.env.VITE_PRODUCTION);
 
   return {
     plugins: [
@@ -35,21 +37,20 @@ export default defineConfig(({ mode }) => {
       }
     },
     define: {
-      'process.env.CUSTOM_ENV': JSON.stringify(custom_env), // JSON.stringify used
-      'process.env.PRODUCTION': JSON.stringify(env[`PRODUCTION_${custom_env.toUpperCase()}`] === 'true'), // boolean
-      'process.env.SITE_NAME': JSON.stringify(env[`SITE_NAME_${custom_env.toUpperCase()}`] || ''),
-      'process.env.API_URL': JSON.stringify(env[`API_URL_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_API_URL_RETURN_CODE_DATA': JSON.stringify(env[`VITE_API_URL_RETURN_CODE_DATA_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_JWT_TOKEN': JSON.stringify(env[`VITE_API_URL_JWT_TOKEN_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_FETCH_JWT_URL': JSON.stringify(env[`VITE_FETCH_JWT_URL_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_FIREBASE_API_KEY': JSON.stringify(env[`VITE_FIREBASE_API_KEY_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_AUTH_ADMIN': JSON.stringify(env[`VITE_AUTH_ADMIN_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_PROJECT_ID': JSON.stringify(env[`VITE_PROJECT_ID_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_STORAGE_BUCKET': JSON.stringify(env[`VITE_STORAGE_BUCKET_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_MESSAGING_SENDER_ID': JSON.stringify(env[`VITE_MESSAGING_SENDER_ID_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_APP_ID': JSON.stringify(env[`VITE_APP_ID_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_MEASUREMENT_ID': JSON.stringify(env[`VITE_MEASUREMENT_ID_${custom_env.toUpperCase()}`] as string),
-      'process.env.VITE_SIGNUP_URL': JSON.stringify(env[`VITE_SIGNUP_URL_${custom_env.toUpperCase()}`] as string),
+      VITE_PRODUCTION: JSON.stringify(process.env.VITE_PRODUCTION),
+      VITE_SITE_NAME: JSON.stringify(process.env.VITE_SITE_NAME),
+      VITE_API_URL: JSON.stringify(process.env.VITE_API_URL),
+      VITE_API_URL_RETURN_CODE_DATA: JSON.stringify(process.env.VITE_API_URL_RETURN_CODE_DATA),
+      VITE_JWT_TOKEN: JSON.stringify(process.env.VITE_JWT_TOKEN),
+      VITE_FETCH_JWT_URL: JSON.stringify(process.env.VITE_FETCH_JWT_URL),
+      VITE_FIREBASE_API_KEY: JSON.stringify(process.env.VITE_FIREBASE_API_KEY),
+      VITE_AUTH_ADMIN: JSON.stringify(process.env.VITE_AUTH_ADMIN),
+      VITE_PROJECT_ID: JSON.stringify(process.env.VITE_PROJECT_ID),
+      VITE_STORAGE_BUCKET: JSON.stringify(process.env.VITE_STORAGE_BUCKET),
+      VITE_MESSAGING_SENDER_ID: JSON.stringify(process.env.VITE_MESSAGING_SENDER_ID),
+      VITE_APP_ID: JSON.stringify(process.env.VITE_APP_ID),
+      VITE_MEASUREMENT_ID: JSON.stringify(process.env.VITE_MEASUREMENT_ID),
+      VITE_SIGNUP_URL: JSON.stringify(process.env.VITE_SIGNUP_URL),
     }
   }
 })

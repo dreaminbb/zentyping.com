@@ -5,6 +5,7 @@ class auth {
                 async get_token(): Promise<string | null> {
                                 try {
                                                 // Simulate token retrieval logic
+                                                // console.log(import.meta.env['VITE_FETCH_JWT_URL'])
                                                 const response = await fetch(import.meta.env['VITE_FETCH_JWT_URL'] as string, {
                                                                 method: 'POST',
                                                                 headers: {
@@ -27,8 +28,6 @@ class auth {
 
                 async get_token_overwrite_store_token_fail_throw_error(): Promise<string | void> {
 
-                                // if user already has token, return it.
-                                if (user_info().token === null) return
 
                                 const token = await this.get_token();
 
