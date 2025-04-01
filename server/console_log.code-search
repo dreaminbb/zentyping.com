@@ -1,0 +1,184 @@
+# Query: console.log
+# ContextLines: 1
+
+45 results - 18 files
+
+doc/frontend/No.1  play function module.md:
+  26  function main(): void {
+  27:     console.log('I love coffe btw ._.')
+  28  }
+
+frontend/vite.config.ts:
+  19    process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  20:   //console.log('VITE_PRODUCTION', process.env.VITE_PRODUCTION);
+  21  
+
+frontend/src/main.ts:
+  32    }).catch((error) => {
+  33:     // console.log(error)
+  34    })
+
+frontend/src/api/auth.ts:
+   7                                                  // Simulate token retrieval logic
+   8:     //                                            console.log(import.meta.env['VITE_FETCH_JWT_URL'])
+   9                                                  const response = await fetch(import.meta.env['VITE_FETCH_JWT_URL'] as string, {
+
+  31                                  if (user_info().token == '') {
+  32:                                                 console.log('User token is not set');
+  33                                                  return
+
+frontend/src/api/code.ts:
+  17                                  });
+  18:       //                          console.log(response)
+  19  
+
+  24                                  const data = await response.json();
+  25:                                 console.log(data.code as Array<code_obj>)
+  26                                  return data.code;
+
+frontend/src/api/sginup_in.ts:
+  20                                  })
+  21:         //                        console.log('response', response);
+  22:           //                      console.log('response cookies', response.headers.get('set-cookie'));
+  23                  }
+
+frontend/src/components/code_switch_bar.vue:
+  21        } catch (e) {
+  22:         // console.log(e)
+  23        }
+
+frontend/src/components/user_activity_calender.vue:
+  63  //   // if (year < 2024) {
+  64: //   //   console.log('no date')
+  65  //   //   return
+
+frontend/src/firebase/github_auth.ts:
+  12                                  // console.info(typeof result, credential, 'type')
+  13:                                 // console.log('user', user)
+  14:                                 // console.log('token', token)
+  15  
+
+  51                                  user_status().init_status()
+  52:            //                     console.log('User signed out');
+  53                  } catch (error) {
+
+frontend/src/module/code_load.ts:
+  19  
+  20:     //console.log('code_load.ts', code)
+  21  
+  22:    // console.log(code, 'code_load.ts')
+  23      //* wait until finish rendering
+
+frontend/src/module/play_func.ts:
+  124      ) as HTMLElement
+  125:     // console.log(this.play_code_display_container, this.time_display_display)
+  126      if (!this.play_code_display_container || !this.time_display_display) {
+
+  142      // add utyped class to all spans
+  143:     // console.log(this.essenced_spans_for_comparison)
+  144:     // console.log('init')
+  145      this.add_untyped_class_to_all_spans()
+
+  149    private add_untyped_class_to_all_spans(): void {
+  150:     //console.log('add untyped class to all spans function')
+  151      try {
+
+  351      this.check_afk_after_every_type()
+  352:     // console.log(this.essenced_spans_for_comparison)
+  353  
+
+  491      if (input_char === '\n' && before_target_span_elm?.textContent !== '\n') {
+  492:       // console.log(before_target_span_elm?.textContent, this.char_index, 'char index', 231)
+  493  
+
+  510  
+  511:     console.log(target_span_elm)
+  512      const is_target_elm_text_space: boolean = target_span_elm?.textContent === '\u00A0'
+
+frontend/src/module/short_cut_manager.ts:
+  25    public handle_keydown_for_short_cut(e: KeyboardEvent): void {
+  26:     console.log(e.key)
+  27      if (e.key === 'Tab') {
+
+  29        e.preventDefault();
+  30:       //console.log(code_data().code_point)
+  31  
+
+frontend/src/store/store.ts:
+   98          // 既存のデータがある場合は直接更新
+   99:         //console.log(this.code_data_obj)
+  100  
+
+  131          }
+  132:         //console.log(data)
+  133          this.code_data_obj = data as unknown as store_code_type
+
+server/index.ts:
+  28  //   origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+  29: //     console.log('Request from origin:', origin);
+  30  
+
+  33  //     } else {
+  34: //       console.log('Rejected origin:', origin);
+  35  //       callback(new Error('Not allowed by CORS'));
+
+  44  // app.use(cors(corsOptions));
+  45: console.log('is production', config.PRODUCTION, 'is jwt auth', config.JTW_AUTH)
+  46  // before every request, check request has jwt
+
+  48  app.use((req: Request, res: Response, next: Function) => {
+  49:   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} ${req.headers.authorization}`);
+  50  
+
+  54  
+  55:   console.log(token, 'token')
+  56:   console.log(req.originalUrl, 'origin')
+  57    if (req.url === './favicon.ico' || (req.url === '/favicon.ico' || req.url === '/')) {
+
+  87  app.get('/', (req: Request, res: Response) => {
+  88:   console.log(req)
+  89    res.sendFile(index_file) /* html file */
+
+  93  app.listen(config.API_HOST_PORT, () => {
+  94:   console.log(`Server is running on http://localhost:${config.API_HOST_PORT}`);
+  95  });
+
+server/module/db.ts:
+  49  
+  50:                         console.log('Database connection established');
+  51                  } catch (e) {
+
+  58                  try {
+  59:                         console.log(`getting ${name} collection at ${(new Date)}`)
+  60                          if (!this.db) {
+
+  87                          if (result) {
+  88:                                 console.log("user created")
+  89                                  return true
+
+server/module/auth/signin_login.ts:
+  24  
+  25:                                                 console.log("user's last login time updated")
+  26  
+
+server/router/auth.ts:
+  11                  const sub: string = randomUUIDv7()
+  12:                 console.log(config.PRODUCTION ?? req.body.username)
+  13  
+
+  34                  const user_github_id: string = req.body.github_user_id
+  35:                 console.log('\x1b[32m%s\x1b[0m', user_github_id)
+  36:                 console.log(req.body)
+  37  
+
+  45                  const response = await handle_sign_in(user_github_id)
+  46:                 console.log(response)
+  47  
+  48                  if (response.token) {
+  49:                                 console.log('there is a token')
+  50                                  res.status(response.status).cookie('jwt', response.token, {
+
+server/router/code.ts:
+  38  
+  39:                                                 console.log(collection ? 'collection is available' : 'collection is not available')
+  40  

@@ -16,7 +16,7 @@ app.use(morgan('combined'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/static', express.static(path.join(__dirname, 'static')))
+app.use('/assets', express.static(path.join(__dirname, 'static', 'assets')));
 
 
 // const allowedOrigins = config.PRODUCTION
@@ -42,9 +42,6 @@ app.use('/static', express.static(path.join(__dirname, 'static')))
 // };
 
 // app.use(cors(corsOptions));
-
-
-// app.use(helmet());
 console.log('is production', config.PRODUCTION, 'is jwt auth', config.JTW_AUTH)
 // before every request, check request has jwt
 
@@ -55,12 +52,17 @@ app.use((req: Request, res: Response, next: Function) => {
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(' ')[1];
 
+  console.log(token, 'token')
   console.log(req.originalUrl, 'origin')
+  console.log(req.url, 'url', '\n\n\n\n\n\n')
+
   if (req.url === './favicon.ico' || (req.url === '/favicon.ico' || req.url === '/')) {
+    console.log('favicon.ico request, skipping auth check');
     return next()
   }
 
   if (isAuthRoute || (!config.PRODUCTION && !config.JTW_AUTH && token === config.DEV_TOKEN)) {
+    console.log('Skipping auth check for auth route or dev mode');
     return next();
   }
 
