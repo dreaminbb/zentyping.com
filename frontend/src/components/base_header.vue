@@ -26,14 +26,14 @@ export default defineComponent({
     <nav>
       <router-link to="/about_owner">
         <div><font-awesome-icon class="nav_icon1" icon="book" /></div>
-      </router-link>
-      <router-link to="/info">
-        <div><font-awesome-icon class="nav_icon2" icon="info" /></div>
-      </router-link>
-      <router-link to="/sc_doc">
-        <div><i class="fa-solid fa-keyboard nav_icon3"></i></div>
-      </router-link>
-
+      </div>
+      <a
+        href="https://github.com/dreaminbb/zentyping.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <font-awesome-icon class="nav_icon_github" :icon="['fab', 'github']" />
+      </a>
       <div>
         <a
           href="https://github.com/dreaminbb/zentyping.com/"
