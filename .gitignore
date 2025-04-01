@@ -1,0 +1,15 @@
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+.obsidian/
+
+server/static/
+frontend/.env.prod
+frontend/.env.dev
+# Environment files
+.env
+db/
+# Dependencies
+node_modules/
+**/node_modules/
