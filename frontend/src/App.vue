@@ -21,9 +21,9 @@ export default defineComponent({
 
 <template>
   <main id="main_container">
-    <base_header id="base_header_comp" />
-    <code_play id="code_play_comp" />
-    <base_footer id="base_footer_comp" />
+    <base_header />
+    <code_play />
+    <base_footer />
   </main>
 </template>
 

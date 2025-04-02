@@ -37,7 +37,8 @@ export default defineConfig(({ mode }) => {
       }
     },
     define: {
-      VITE_PRODUCTION: JSON.stringify(process.env.VITE_PRODUCTION),
+      VITE_PRODUCTION: JSON.stringify(process.env.VITE_PRODUCTION === 'true' ? true : false),
+      VITE_TEST_WITH_SERVER: JSON.stringify(process.env.VITE_TEST_WITH_SERVER === 'true' ? true : false),
       VITE_SITE_NAME: JSON.stringify(process.env.VITE_SITE_NAME),
       VITE_API_URL: JSON.stringify(process.env.VITE_API_URL),
       VITE_API_URL_RETURN_CODE_DATA: JSON.stringify(process.env.VITE_API_URL_RETURN_CODE_DATA),

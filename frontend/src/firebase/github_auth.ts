@@ -9,9 +9,9 @@ async function sgin_in_with_github(): Promise<{ user: any; token: string | undef
                                 const credential = GithubAuthProvider.credentialFromResult(result);
                                 const token: string | undefined = credential?.accessToken;
                                 const user = result.user;
-                                // console.info(typeof result, credential, 'type')
-                                // // console.log('user', user)
-                                // // console.log('token', token)
+                                console.info(typeof result, credential, 'type')
+                                console.log('user', user)
+                                console.log('token', token)
 
                                 return { user, token };
                 } catch (error) {
@@ -20,6 +20,9 @@ async function sgin_in_with_github(): Promise<{ user: any; token: string | undef
 }
 
 async function handle_sgin_in(): Promise<void> {
+
+                if (!import.meta.env['VITE_PRODUCTION'] && !import.meta.env['VITE_TEST_WITH_SERVER']) return
+
                 try {
                                 const data = await sgin_in_with_github()
 

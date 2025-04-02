@@ -86,6 +86,25 @@ export const code_data = defineStore('code_data', {
     },
 
     async initialize(): Promise<void> {
+
+      if (!config.is_prodction && !config.is_test_with_server) {
+        // if test mode read code data from local json file.
+        const python = await import('./devdata/python.json');
+        const rust = await import('./devdata/rust.json');
+        const typescript = await import('./devdata/typescript.json');
+
+        this.code_data_obj = {
+          python: python.default,
+          rust: rust.default,
+          typescript: typescript.default
+        };
+
+        console.log(this.code_data_obj, 'test mode')
+        
+        this.ready = true;
+        return;
+
+      }
       try {
         const data = await fetch_all_lang_code_from_api(config.all_code_each_mount)
         //if there is no code_data_obj, hold data as variable and if there is, update it.

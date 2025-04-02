@@ -11,16 +11,16 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { code_data } from './store/store';
 import { loading_setup } from './module/loading'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes
+// })
 library.add(fas as IconPack, far as IconPack, fab as IconPack)
 const app = createApp(App)
 
 
 app.use(pinia)
-app.use(router)
+// app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 
@@ -30,7 +30,7 @@ loading_setup().then(() => {
   code_data().initialize().then(() => {
     app.mount('#app')
   }).catch((error) => {
-    // // console.log(error)
+    console.error('error : some error happened during the initialization of the code data', error)
   })
 })
 
