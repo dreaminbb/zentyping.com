@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     // Strict Type Checking 
-   "strict": true,
+    "resolveJsonModule": true,
+    "strict": true,
     "noEmit": true,
     "allowJs": false,
     "noImplicitAny": true,

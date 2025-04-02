@@ -3,6 +3,8 @@
 //todo : sginup -> save user github id to server.
 
 import { user_info } from "@/store/store"
+import { fetch_with_middleware } from "./middleware/check_dev_mode";
+import config from "@/config";
 
 async function siginup_send_github_id_to_server(id: string): Promise<void> {
 
@@ -11,7 +13,9 @@ async function siginup_send_github_id_to_server(id: string): Promise<void> {
                                                 // console.error('Token is not available in user_info store');
                                                 return;
                                 }
-                                fetch(import.meta.env['VITE_SGINUP_URL'] as string, {
+
+                                const url: string = import.meta.env['VITE_SGINUP_URL'] as string
+                                const init: RequestInit = {
                                                 method: 'POST',
                                                 headers: {
                                                                 'Content-Type': 'application/json',
@@ -21,9 +25,10 @@ async function siginup_send_github_id_to_server(id: string): Promise<void> {
                                                 body: JSON.stringify({
                                                                 github_user_id: id,
                                                 })
-                                })
-                                // console.log('response', response);
-                                // console.log('response cookies', response.headers.get('set-cookie'));
+                                }
+                                const response = await fetch_with_middleware(url, init);
+
+                                console.log(config.is_prodction ?? 'response', response);
                 }
                 catch (e) {
                                 console.error('Error sending GitHub ID to server:', e)
