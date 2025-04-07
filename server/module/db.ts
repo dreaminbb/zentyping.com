@@ -23,12 +23,18 @@ class db {
         }
 
         async init(): Promise<void> {
+                if (!config.PRODUCTION) {
+                        console.log('init db')
+                }
                 await this.connect_db()
                 this.python_code_collection = await this.get_collection(config.PYTHON_COLLECTION_NAME as string)
                 this.ts_code_collection = await this.get_collection(config.TS_COLLECTION_NAME as string)
                 this.rust_code_collection = await this.get_collection(config.RUST_COLLECTION_NAME as string)
                 this.init_colletion_obj()
                 this.user_collection = await this.get_collection(config.USER_COLLECTION_NAME as string)
+                if (!config.PRODUCTION) {
+                        console.log('init db done')
+                }
         }
 
         init_colletion_obj() {

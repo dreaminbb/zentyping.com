@@ -11,19 +11,35 @@ router.post('/fetch', async (req: Request, res: Response): Promise<any> => {
 
 
                 const lang: string = req.body.lang
-                const code_mount = req.body.mount
+                const code_mount: number = req.body.mount
                 console.info('lang:', lang, 'code_mount:', code_mount)
+                console.log(req.body, 'req body')
 
-                if (!req.body || !code_mount) return res.status(400).send({
-                                'error': 'wrong parameter'
-                })
+                if (!req.body || !code_mount) {
+                                if (!config.PRODUCTION) {
+                                                console.log('request body is empty')
+                                                console.log(!req.body)
+                                                console.log(!code_mount)
+                                                console.log(code_mount, typeof code_mount)
+                                }
+                                return res.status(400).send({
+                                                'error': 'wrong parameter'
+                                })
+                }
 
 
-                if (!available_code_list.includes(lang) && lang !== 'all') return res.status(400).send({
-                                'error': 'wrong parameter',
-                                code: [error_code_data]
-                })
+                if (!available_code_list.includes(lang) && lang !== 'all') {
 
+                                if (!config.PRODUCTION) {
+                                                console.log('lang is not available')
+                                }
+
+                                return res.status(400).send({
+                                                'error': 'wrong parameter',
+                                                code: [error_code_data]
+                                })
+
+                }
 
                 // If req parameter has mount butno lang return all lang code data each mount.
                 // This process is only when user first access to the site.
