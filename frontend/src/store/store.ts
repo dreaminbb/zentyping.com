@@ -87,7 +87,7 @@ export const code_data = defineStore('code_data', {
 
     async initialize(): Promise<void> {
 
-      if (!config.is_prodction && !config.is_test_with_server) {
+      if (!config.is_production && !config.is_test_with_server) {
         // if test mode read code data from local json file.
         const python = await import('./devdata/python.json');
         const rust = await import('./devdata/rust.json');
@@ -100,7 +100,7 @@ export const code_data = defineStore('code_data', {
         };
 
         console.log(this.code_data_obj, 'test mode')
-        
+
         this.ready = true;
         return;
 
