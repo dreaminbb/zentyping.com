@@ -10,17 +10,9 @@ class auth {
                                                 // console.log(import.meta.env['VITE_FETCH_JWT_URL'])
 
                                                 const url = import.meta.env['VITE_FETCH_JWT_URL'] as string
-                                                const init = {
-                                                                method: 'POST',
-                                                                headers: {
-                                                                                'Content-Type': 'application/json'
-                                                                },
-                                                                body: JSON.stringify({
-                                                                                username: user_info().user_name,
-                                                                })
-                                                }
+                                                const method = 'POST' as string
 
-                                                const data = await fetch_with_middleware(url, init);
+                                                const data = await fetch_with_middleware(url, method as string);
 
                                                 const token = data === null ? null : data.token as string;
 
@@ -33,7 +25,7 @@ class auth {
 
                 async get_token_overwrite_store_token_fail_throw_error(): Promise<string | void> {
 
-                                if (!config.is_prodction && !config.is_test_with_server) {
+                                if (!config.is_production && !config.is_test_with_server) {
                                                 return
                                 }
                                 const token = await this.get_token();

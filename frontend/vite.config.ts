@@ -17,7 +17,6 @@ interface ImportMeta {
 export default defineConfig(({ mode }) => {
 
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-  // console.log('VITE_PRODUCTION', process.env.VITE_PRODUCTION);
 
   return {
     plugins: [
@@ -40,9 +39,12 @@ export default defineConfig(({ mode }) => {
       VITE_PRODUCTION: JSON.stringify(process.env.VITE_PRODUCTION === 'true' ? true : false),
       VITE_TEST_WITH_SERVER: JSON.stringify(process.env.VITE_TEST_WITH_SERVER === 'true' ? true : false),
       VITE_SITE_NAME: JSON.stringify(process.env.VITE_SITE_NAME),
+      VITE_DEV_KEY_ID: JSON.stringify(process.env.VITE_DEV_KEY_ID),
+      VITE_DEV_KEY_SECRET: JSON.stringify(process.env.VITE_DEV_KEY_SECRET),
       VITE_API_URL: JSON.stringify(process.env.VITE_API_URL),
       VITE_API_URL_RETURN_CODE_DATA: JSON.stringify(process.env.VITE_API_URL_RETURN_CODE_DATA),
       VITE_JWT_TOKEN: JSON.stringify(process.env.VITE_JWT_TOKEN),
+      VITE_DEV_TOKEN: JSON.stringify(process.env.VITE_DEV_TOKEN),
       VITE_FETCH_JWT_URL: JSON.stringify(process.env.VITE_FETCH_JWT_URL),
       VITE_FIREBASE_API_KEY: JSON.stringify(process.env.VITE_FIREBASE_API_KEY),
       VITE_AUTH_ADMIN: JSON.stringify(process.env.VITE_AUTH_ADMIN),

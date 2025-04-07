@@ -15,20 +15,11 @@ async function siginup_send_github_id_to_server(id: string): Promise<void> {
                                 }
 
                                 const url: string = import.meta.env['VITE_SGINUP_URL'] as string
-                                const init: RequestInit = {
-                                                method: 'POST',
-                                                headers: {
-                                                                'Content-Type': 'application/json',
-                                                                'Authorization': `Bearer ${user_info().token as string}`
-                                                },
-                                                credentials: 'include',
-                                                body: JSON.stringify({
-                                                                github_user_id: id,
-                                                })
-                                }
-                                const response = await fetch_with_middleware(url, init);
+                                const method: string = 'POST' as string
+                                const body: object = { github_user_id: id }
+                                const response = await fetch_with_middleware(url, method, body);
 
-                                console.log(config.is_prodction ?? 'response', response);
+                                console.log(config.is_production ?? 'response', response);
                 }
                 catch (e) {
                                 console.error('Error sending GitHub ID to server:', e)
