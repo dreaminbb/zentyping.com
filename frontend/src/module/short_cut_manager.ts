@@ -1,4 +1,3 @@
-import { code_data } from "@/store/store";
 import play_func_ins from "./play_func";
 
 class short_cut {

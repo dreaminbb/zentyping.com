@@ -23,21 +23,24 @@ export default defineComponent({
       <header id="site_name">{{ SITE_SAME }}<i class="fa-solid fa-code"></i></header>
     </h1>
     <nav>
-      <div>
+      <router-link to="/about_owner">
         <div><font-awesome-icon class="nav_icon1" icon="book" /></div>
-      </div>
-      <a
-        href="https://github.com/dreaminbb/zentyping.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <font-awesome-icon class="nav_icon_github" :icon="['fab', 'github']" />
-      </a>
+      </router-link>
+      <router-link to="/info">
+        <div><font-awesome-icon class="nav_icon2" icon="info" /></div>
+      </router-link>
+      <router-link to="/sc_doc">
+        <div><i class="fa-solid fa-keyboard nav_icon3"></i></div>
+      </router-link>
+
       <div>
-        <div><font-awesome-icon class="nav_icon2" icon="gear" /></div>
-      </div>
-      <div>
-        <div><font-awesome-icon class="nav_icon3" icon="bell" /></div>
+        <a
+          href="https://github.com/dreaminbb/zentyping.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <font-awesome-icon class="nav_icon_github" :icon="['fab', 'github']" />
+        </a>
       </div>
 
       <div id="user_name_display">
