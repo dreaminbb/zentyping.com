@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from '@/App.vue';
 import pinia from './store/store';
-import { createRouter, createWebHistory } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library, type IconPack } from '@fortawesome/fontawesome-svg-core';
 import routes from './router';
@@ -11,17 +10,13 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { code_data } from './store/store';
 import { loading_setup } from './module/loading'
 
-// const router = createRouter({
-//   history: createWebHistory(),
-//   routes
-// })
 library.add(fas as IconPack, far as IconPack, fab as IconPack)
 const app = createApp(App)
 
 
-app.use(pinia)
-// app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
+app.use(pinia)
+app.use(routes)
 
 
 loading_setup().then(() => {
