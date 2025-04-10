@@ -11,7 +11,6 @@ export default defineComponent({
       handle_sign_out,
       user_status,
       user_info,
-      SITE_SAME: import.meta.env.VITE_SITE_NAME
     }
   }
 })
@@ -20,7 +19,7 @@ export default defineComponent({
 <template>
   <header>
     <h1>
-      <header id="site_name">{{ SITE_SAME }}<i class="fa-solid fa-code"></i></header>
+      <header id="site_name">zentyping<i class="fa-solid fa-code"></i></header>
     </h1>
     <nav>
       <router-link to="/about_owner">
