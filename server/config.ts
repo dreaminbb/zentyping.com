@@ -11,9 +11,12 @@ const from_env = {
         PYTHON_COLLECTION_NAME: process.env.PYTHON_COLLECTION_NAME ?? undefined,
         TS_COLLECTION_NAME: process.env.TS_COLLECTION_NAME ?? undefined,
         RUST_COLLECTION_NAME: process.env.RUST_COLLECTION_NAME ?? undefined,
+        DEV_ROOT_URL:process.env.DEV_ROOT_URL ?? undefined,
         JWT_SECRET_KEY: process.env.JWT_SECRET_KEY as string ?? undefined,
         JWT_EXPIRATION_TIME: process.env.JWT_EXPIRATION_TIME as string ?? undefined,
-        DEV_TOKEN: process.env.DEV_TOKEN as string ?? undefined,
+        DEV_ALLOW_ORIGIN: process.env.DEV_ALLOW_ORIGIN ?? undefined,
+        DEV_URL: process.env.DEV_URL ?? undefined,
+        DEVONLY_API_KEY: process.env.DEVONLY_API_KEY ?? undefined,
         JTW_AUTH: process.env.JTW_AUTH === 'true' ? true : false,
         PRODUCTION: process.env.PRODUCTION === 'true' ? true : false
 }
