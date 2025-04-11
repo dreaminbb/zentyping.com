@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import svgLoader from 'vite-svg-loader'
+import Markdown from 'vite-plugin-md'
 
 interface ImportMetaEnv {
   [key: string]: string | boolean | undefined
@@ -20,8 +20,10 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      vue(),
-      svgLoader(),
+      vue({
+        include: [/\.vue$/, /\.md$/], // .mdファイルもVueコンポーネントとして扱う}),
+      }),
+      Markdown()
     ],
     server: {
       port: 8000
@@ -32,7 +34,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
-        'vue': 'vue/dist/vue.esm-bundler.js'
+        'vue': 'vue/dist/vue.esm-bundler.js',
+        '@md': '/md',
       }
     },
     define: {
