@@ -1,6 +1,5 @@
 import { code_obj } from "@/interface";
 import { fetch_with_middleware } from "./middleware/check_dev_mode";
-import config from "@/config";
 
 export async function fetch_one_lang_code_from_api(mount: number, lang: string): Promise<Array<code_obj>> {
 
@@ -12,7 +11,7 @@ export async function fetch_one_lang_code_from_api(mount: number, lang: string):
                                 const body: object = { mount, lang }
 
                                 const data = await fetch_with_middleware(url, method, body);
-                                console.log(config.is_production ?? data.code as Array<code_obj>)
+                                // console.log(config.is_production ?? data.code as Array<code_obj>)
                                 return data.code;
                 } catch (error) {
                                 console.error('Error fetching code:', error);

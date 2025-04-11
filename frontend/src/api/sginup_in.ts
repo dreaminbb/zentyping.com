@@ -19,7 +19,7 @@ async function siginup_send_github_id_to_server(id: string): Promise<void> {
                                 const body: object = { github_user_id: id }
                                 const response = await fetch_with_middleware(url, method, body);
 
-                                console.log(config.is_production ?? 'response', response);
+                                // console.log(config.is_production ?? 'response', response);
                 }
                 catch (e) {
                                 console.error('Error sending GitHub ID to server:', e)
