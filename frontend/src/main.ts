@@ -18,6 +18,24 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(pinia)
 app.use(routes)
 
+const markdownFiles = import.meta.glob('./src/md/*.md', { eager: true }) as Record<string, { default: any }>;
+// Markdownコンポーネントをグローバル登録
+Object.entries(markdownFiles).forEach(([path, module]) => {
+  // パスからコンポーネント名を生成（例：./src/md/about.md -> AboutMd）
+  const componentName = path
+    .split('/')
+    .pop()
+    ?.replace(/\.md$/, '')
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('') + 'Md';
+
+  if (componentName) {
+    // グローバルコンポーネントとして登録
+    app.component(componentName, module.default);
+  }
+});
+
 
 loading_setup().then(() => {
 
