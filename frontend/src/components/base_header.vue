@@ -19,7 +19,9 @@ export default defineComponent({
 <template>
   <header>
     <h1>
+  <router-link to="/">
       <header id="site_name">zentyping<i class="fa-solid fa-code"></i></header>
+  </router-link>
     </h1>
     <nav>
       <router-link to="/about_owner">

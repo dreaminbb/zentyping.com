@@ -17,21 +17,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(`/assets`, express.static(path.join(__dirname, 'static', 'assets')));
+app.use('/md', express.static(path.join(__dirname, 'static/md')));
 
 
 
-app.use((req: Request, res: Response, next: NewType) => {
-
+app.use((req: Request, res: Response, next: NextFunction) => {
   if (config.PRODUCTION && req.path.startsWith(`${config.DEV_URL}/`)) {
-    return res.status(404).json({ error: 'Not found in production' });
+    res.status(404).json({ error: 'Not found in production' });
+    return
   }
 
   if (config.PRODUCTION) {
-    prod_middleware.prod_mode(req, res, next)
+    prod_middleware.prod_mode(req, res, next);
   } else {
-    dev_middelware.dev_mode(req, res, next)
+    dev_middelware.dev_mode(req, res, next);
   }
-
 });
 
 // Move CORS middleware to be first in the chain
