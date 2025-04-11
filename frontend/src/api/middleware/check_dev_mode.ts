@@ -1,4 +1,5 @@
 import config from "@/config";
+import { user_info } from "@/store/store";
 
 async function fetch_with_middleware(url: string, method: string, body?: object): Promise<any | null> {
 
@@ -10,12 +11,16 @@ async function fetch_with_middleware(url: string, method: string, body?: object)
 
                 let req_init_add_key: RequestInit = {};
 
+                const token: string = config.is_production ? user_info().token as string : import.meta.env['VITE_API_REQ_KEY'] as string
+                const header_value: string = 'Bearer ' + token
+
+
                 if (method === 'GET') {
                                 req_init_add_key = {
                                                 method: method,
                                                 headers: {
                                                                 'Content-Type': 'application/json',
-                                                                'Authorization': import.meta.env['VITE_API_REQ_KEY'] as string
+                                                                'Authorization': header_value
                                                 },
                                                 credentials: 'include'
                                 }
@@ -26,7 +31,7 @@ async function fetch_with_middleware(url: string, method: string, body?: object)
                                                 method: method,
                                                 headers: {
                                                                 'Content-Type': 'application/json',
-                                                                'Authorization': import.meta.env['VITE_API_REQ_KEY'] as string
+                                                                'Authorization': header_value
                                                 },
                                                 credentials: 'include',
                                                 body: body ? JSON.stringify(body) : undefined,
